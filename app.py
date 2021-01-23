@@ -40,9 +40,9 @@ def handle_message(event):
     ID = ""
     reply = ""
     if event.source.type == "group":
-        ID = event.source.group_id
+        ID = event.source.groupId
     elif event.source.type == "user":   
-        ID = event.source.user_id
+        ID = event.source.userId
     if "生日快樂" in message.text:
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
     #if "切" in message.text:
