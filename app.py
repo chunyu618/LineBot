@@ -39,7 +39,6 @@ def handle_message(event):
     userID = event.source.user_id
     print(userID)
     print(type(userID))
-    print(userID.__dict__)
     #print(message)
     #print(message.__dict__)
     #print("生日快樂" in message)
