@@ -52,7 +52,7 @@ def handle_message(event):
     if "野" == message.text.strip():
         reply = TextSendMessage(text="斷")
     if reply != "":
-        line_bot_api.reply_message(reply_token, reply)
+        line_bot_api.reply_message(event.reply_token, reply)
 
 import os
 if __name__ == "__main__":
