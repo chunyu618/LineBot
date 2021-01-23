@@ -44,9 +44,9 @@ def handle_message(event):
     #print(message.__dict__)
     #print("生日快樂" in message)
     if "生日快樂" in message.text:
-        line_bot_api.push_message(str(userID), message)
+        line_bot_api.push_message("U16329817cbf4c6df77f60b122707a691", message)
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    line_bot_api.push_message(str(userID), reply)
+    line_bot_api.push_message("U16329817cbf4c6df77f60b122707a691", reply)
 
 import os
 if __name__ == "__main__":
