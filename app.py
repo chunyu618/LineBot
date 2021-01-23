@@ -33,15 +33,14 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):    
-    message = TextSendMessage(text=event.message.text)
-    line_bot_api.reply_message(event.reply_token, message)
+    #message = TextSendMessage(text=event.message.text)
+    #line_bot_api.reply_message(event.reply_token, message)
     reply = ""
     userID = event.source.user_id
     print(event.__dict__)
     if "生日快樂" in message.text:
-        line_bot_api.push_message(userID, message)
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    line_bot_api.push_message(userID, reply)
+    line_bot_api.reply_message(event.reply_token, reply)
 
 import os
 if __name__ == "__main__":
