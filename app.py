@@ -36,13 +36,17 @@ def handle_message(event):
     message = TextSendMessage(text=event.message.text)
     line_bot_api.reply_message(event.reply_token, message)
     reply = ""
+    userID = event.source.user_id
+    print(userID)
+    print(type(userID))
+    print(userID.__dict__)
     #print(message)
     #print(message.__dict__)
     #print("生日快樂" in message)
     if "生日快樂" in message.text:
-        line_bot_api.push_message(event.reply_token, message)
+        line_bot_api.push_message(str(userID), message)
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    line_bot_api.push_message(event.reply_token, reply)
+    line_bot_api.push_message(str(userID), reply)
 
 import os
 if __name__ == "__main__":
