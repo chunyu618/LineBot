@@ -8,6 +8,11 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
+from random import seed
+from random import random
+from datetime import datetime
+seed(datetime.now())
+
 app = Flask(__name__)
 groupID = "Ccfb3d059fffde96fcab318e1c5a24c7e"
 
@@ -50,7 +55,11 @@ def handle_message(event):
     #if "切" in message.text:
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
     if "野" == message.text.strip():
-        reply = TextSendMessage(text="斷")
+        if random() > 0.5:        
+            reply = TextSendMessage(text="斷")
+        else:
+            reply = TextSendMessage(text="格")
+            
     if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
 
