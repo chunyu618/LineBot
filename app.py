@@ -37,9 +37,7 @@ def handle_message(event):
     line_bot_api.reply_message(event.reply_token, message)
     reply = ""
     if "生日快樂" in message:
-        reply = "@林珺瑩 生日快樂"
-    if "test" in message:
-        reply = "@林珺瑩 生日快樂"
+        reply = TextSendMessage(text="@林珺瑩 生日快樂")
     line_bot_api.reply_message(event.reply_token, reply)
 
 import os
