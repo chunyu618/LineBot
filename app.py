@@ -51,7 +51,8 @@ def handle_message(event):
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
     if "野" == message.text.strip():
         reply = TextSendMessage(text="斷")
-    line_bot_api.push_message(ID, reply)
+    if reply != "":
+        line_bot_api.push_message(ID, reply)
 
 import os
 if __name__ == "__main__":
