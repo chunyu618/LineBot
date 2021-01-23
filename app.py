@@ -47,7 +47,7 @@ def handle_message(event):
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
     #if "切" in message.text:
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
-    if "野" == message.text:
+    if "野" == message.text.strip():
         reply = TextSendMessage(text="斷")
     line_bot_api.push_message(ID, reply)
 
