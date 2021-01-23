@@ -9,6 +9,7 @@ from linebot.exceptions import (
 from linebot.models import *
 
 app = Flask(__name__)
+groupID = "Ccfb3d059fffde96fcab318e1c5a24c7e"
 
 # Channel Access Token
 line_bot_api = LineBotApi('8kBJ1gq9dgeHZDS7SKd/dVaKkrGwkBEZmscOEqR1yKdwoTb3Zve+6hf8T9HPt1wG4eJKFZi+aUj0DNQncog5n5JGE6dha4G9jEVsn1BLSelYLiWxoNxj0T04DPUk0Hy/WS9ASu4IDuI7JhHmF2MS7gdB04t89/1O/w1cDnyilFU=')
@@ -40,7 +41,9 @@ def handle_message(event):
     print(event.__dict__)
     if "生日快樂" in message.text:
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    line_bot_api.reply_message(event.reply_token, reply)
+    if "切" in message.text:
+        reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
+    line_bot_api.pull_message(groupID, reply)
 
 import os
 if __name__ == "__main__":
