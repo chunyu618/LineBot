@@ -40,7 +40,7 @@ def handle_message(event):
     ID = ""
     reply = ""
     if event.source.type == "group":
-        ID = group_id#"Ccfb3d059fffde96fcab318e1c5a24c7e"
+        ID = event.source.group_id#"Ccfb3d059fffde96fcab318e1c5a24c7e"
     elif event.source.type == "user":   
         ID = event.source.user_id
     if "生日快樂" in message.text:
