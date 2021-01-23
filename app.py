@@ -36,13 +36,13 @@ def callback():
 def handle_message(event):    
     message = TextSendMessage(text=event.message.text)
     #line_bot_api.reply_message(event.reply_token, message)
+    print(event.__dict__)
     ID = ""
     reply = ""
     if event.source.type == "group":
-        ID = event.source.groupId
+        ID = event.source.group_id
     elif event.source.type == "user":   
         ID = event.source.user_id
-    print(event.__dict__)
     if "生日快樂" in message.text:
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
     #if "切" in message.text:
