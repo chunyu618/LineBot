@@ -43,7 +43,7 @@ def handle_message(event):
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
     if "切" in message.text:
         reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
-    line_bot_api.pull_message(groupID, reply)
+    line_bot_api.push_message(groupID, reply)
 
 import os
 if __name__ == "__main__":
