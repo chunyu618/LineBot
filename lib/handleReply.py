@@ -30,7 +30,7 @@ def getReply(message):
         elif r > 0.5:
             reply = TextSendMessage(text="斷")
         else:
-            reply = TextSendMessage(text="蛋")
+            reply = TextSendMessage(text="彈")
 
     return reply            
 
