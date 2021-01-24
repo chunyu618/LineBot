@@ -16,7 +16,10 @@ def getReply(message):
     #if "切" in message.text:
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
     elif "野" == message.strip():
-        if random() > 0.5:
+        r = random()
+        if r < 0.001:
+            reply = TextSendMessage(text="幾歲了還在接龍＝＝")
+        elif r > 0.5:
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="格")
