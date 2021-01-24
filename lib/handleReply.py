@@ -5,15 +5,17 @@ from random import random
 from datetime import datetime
 from .food import getFood
 seed(datetime.now())
-
+replyDict = {
+    "生日快樂": "@林珺瑩 生日快樂",
+    "早安": "おはようございます。\n今日も一緒に頑張りましょう。",
+    "晚安": "今夜もおやすみなさい。\nやさしい夢みてね。"
+}
 
 def getReply(message):
     reply = ""
     if "吃什麼" == message.strip():
         reply = TextSendMessage(text=getFood())
-    elif "生日快樂" in message:
-        reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    #if "切" in message.text:
+    #elif "切" in message.text:
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
     elif "野" == message.strip():
         r = random()
@@ -31,7 +33,11 @@ def getReply(message):
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="彈")
-
+    else:
+        try:
+            reply = TextSendMessage(text=replyDict[message.strip()])
+        except:
+            reply = ""
     return reply            
 
 def main():
