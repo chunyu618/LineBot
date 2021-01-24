@@ -23,6 +23,14 @@ def getReply(message):
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="格")
+    elif "炸" == message.strip():
+        r = random()
+        if r < 0.001:
+            reply = TextSendMessage(text="幾歲了還在接龍＝＝")
+        elif r > 0.5:
+            reply = TextSendMessage(text="斷")
+        else:
+            reply = TextSendMessage(text="蛋")
 
     return reply            
 
