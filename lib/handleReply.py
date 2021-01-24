@@ -10,7 +10,7 @@ seed(datetime.now())
 def getReply(message):
     reply = ""
     if "吃什麼" == message.strip():
-        reply = getFood()
+        reply = TextSendMessage(text=getFood())
     elif "生日快樂" in message:
         reply = TextSendMessage(text="@林珺瑩 生日快樂")
     #if "切" in message.text:
