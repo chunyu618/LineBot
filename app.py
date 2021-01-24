@@ -45,6 +45,7 @@ def handle_message(event):
         ID = event.source.user_id
 
     reply = getReply(message.text)            
+    print(reply)
     if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
 
