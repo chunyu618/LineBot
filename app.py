@@ -8,10 +8,7 @@ from linebot.exceptions import (
 )
 from linebot.models import *
 
-from random import seed
-from random import random
-from datetime import datetime
-seed(datetime.now())
+from lib.handleReply import getReply
 
 app = Flask(__name__)
 groupID = "Ccfb3d059fffde96fcab318e1c5a24c7e"
@@ -40,26 +37,14 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):    
     message = TextSendMessage(text=event.message.text)
-    #line_bot_api.reply_message(event.reply_token, message)
-    print(event.__dict__)
+    #print(event.__dict__)
     ID = ""
-    reply = ""
     if event.source.type == "group":
         ID = event.source.group_id #"Ccfb3d059fffde96fcab318e1c5a24c7e"
     elif event.source.type == "user":   
         ID = event.source.user_id
-    print("ID is %s" % (ID))
 
-    if "生日快樂" in message.text:
-        reply = TextSendMessage(text="@林珺瑩 生日快樂")
-    #if "切" in message.text:
-    #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
-    if "野" == message.text.strip():
-        if random() > 0.5:        
-            reply = TextSendMessage(text="斷")
-        else:
-            reply = TextSendMessage(text="格")
-            
+    reply = getReply(message)            
     if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
 
