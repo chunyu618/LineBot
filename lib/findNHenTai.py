@@ -20,7 +20,7 @@ def getUrl(message):
     if len(tag) == 0:
         return "請輸入關鍵字"
         
-    nhentai = "https://nhentai.to/"
+    nhentai = "https://nhentai.net/"
     url = nhentai + "search?q=" + tag
     
     # Get the result number
