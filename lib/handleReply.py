@@ -34,7 +34,7 @@ def getReply(message):
         else:
             reply = TextSendMessage(text="彈")
     elif "衛星雲圖" == message.strip():
-        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-B0028-003.jpg"
+        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-A0058-003.png"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
