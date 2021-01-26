@@ -17,6 +17,9 @@ def getUrl(message):
     #print(message.split()[1:])
     tag = "+".join(message.split()[1:])
     #print(tag)
+    if len(tag) == 0:
+        return "請輸入關鍵字"
+        
     nhentai = "https://nhentai.to/"
     url = nhentai + "search?q=" + tag
     
