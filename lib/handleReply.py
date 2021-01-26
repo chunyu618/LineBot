@@ -4,7 +4,10 @@ from random import seed
 from random import random
 from datetime import datetime
 from .food import getFood
+from . import findNHenTai
+
 seed(datetime.now())
+
 replyDict = {
     "生日快樂": "@曉謙 生日快樂",
     "早安": "おはようございます。\n今日も一緒に頑張りましょう。",
@@ -39,6 +42,8 @@ def getReply(message):
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
+    elif "找本子" == message.split()[0]:
+        reply = findNHenTai.getUrl(message)
     else:
         try:
             reply = TextSendMessage(text=replyDict[message.strip()])
