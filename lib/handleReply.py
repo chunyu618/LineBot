@@ -6,7 +6,7 @@ from datetime import datetime
 from .food import getFood
 seed(datetime.now())
 replyDict = {
-    "生日快樂": "@林珺瑩 生日快樂",
+    "生日快樂": "@曉謙 生日快樂",
     "早安": "おはようございます。\n今日も一緒に頑張りましょう。",
     "晚安": "今夜もおやすみなさい。\nやさしい夢みてね。"
 }
