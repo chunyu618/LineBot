@@ -15,9 +15,9 @@ app = Flask(__name__)
 groupID = os.getenv("groupID")
 
 # Channel Access Token
-line_bot_api = LineBotApi('8kBJ1gq9dgeHZDS7SKd/dVaKkrGwkBEZmscOEqR1yKdwoTb3Zve+6hf8T9HPt1wG4eJKFZi+aUj0DNQncog5n5JGE6dha4G9jEVsn1BLSelYLiWxoNxj0T04DPUk0Hy/WS9ASu4IDuI7JhHmF2MS7gdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
 # Channel Secret
-handler = WebhookHandler('be659d2030e45542f71387e202f36c4a')
+handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
