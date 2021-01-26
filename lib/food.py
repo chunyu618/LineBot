@@ -17,7 +17,7 @@ def getFood():
             index = randint(0, len(data[key[foodIndex]]) - 1)
             rev += "%s: %s\n" % (key[foodIndex], data[key[foodIndex]][index])
 
-    return rev    
+    return rev.strip()
 
 def main():
     print(getFood())
