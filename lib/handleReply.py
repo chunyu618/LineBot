@@ -33,6 +33,12 @@ def getReply(message):
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="彈")
+    elif "衛星雲圖" == message.strip():
+        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-B0028-003.jpg"
+        reply = ImageSendMessage(
+            original_content_url=imgUrl,
+            preview_image_url=imgUrl
+            )
     else:
         try:
             reply = TextSendMessage(text=replyDict[message.strip()])
