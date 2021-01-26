@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+import os
 
 from linebot import (
     LineBotApi, WebhookHandler
@@ -11,7 +12,7 @@ from linebot.models import *
 from lib.handleReply import getReply
 
 app = Flask(__name__)
-groupID = "Ccfb3d059fffde96fcab318e1c5a24c7e"
+groupID = os.getenv("groupID")
 
 # Channel Access Token
 line_bot_api = LineBotApi('8kBJ1gq9dgeHZDS7SKd/dVaKkrGwkBEZmscOEqR1yKdwoTb3Zve+6hf8T9HPt1wG4eJKFZi+aUj0DNQncog5n5JGE6dha4G9jEVsn1BLSelYLiWxoNxj0T04DPUk0Hy/WS9ASu4IDuI7JhHmF2MS7gdB04t89/1O/w1cDnyilFU=')
