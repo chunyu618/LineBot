@@ -22,7 +22,7 @@ replyDict = {
     "指令": usage
 }
 
-def getReply(message):
+def getReply(message, token):
     seed()
     reply = ""
     if "吃什麼" == message.strip():
@@ -62,8 +62,11 @@ def getReply(message):
             preview_image_url=imgUrl
             )
     elif "找本子" == message.split()[0]:
-        from . import findNHenTai
-        reply = TextSendMessage(text=findNHenTai.getUrl(message))
+        if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
+            from . import findNHenTai
+            reply = TextSendMessage(text=findNHenTai.getUrl(message))
+        else:
+            reply = ""
     else:
         try:
             reply = TextSendMessage(text=replyDict[message.strip()].strip())
