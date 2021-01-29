@@ -67,7 +67,7 @@ def getReply(message):
         reply = TextSendMessage(text=findNHenTai.getUrl(message))
     else:
         try:
-            reply = TextSendMessage(text=replyDict[message.strip()])
+            reply = TextSendMessage(text=replyDict[message.strip()].strip())
         except:
             reply = ""
     return reply            
