@@ -5,7 +5,6 @@ from random import seed
 from datetime import datetime
 from os import path
 seed(datetime.now())
-
 '''
 for i in range(1,10):
     r = requests.get('https://unity3d.com/unity/qa/lts-releases?page='+str(i))
@@ -19,15 +18,14 @@ def getUrl(message):
     #print(tag)
     if len(tag) == 0:
         return "請輸入關鍵字"
-        
+
     nhentai = "https://nhentai.net/"
     url = nhentai + "search?q=" + tag
-    
     # Get the result number
     r = requests.get(url)
     soup = BeautifulSoup(r.text, features="html.parser")
-    result = soup.find_all('h2')[0].get_text().split()[0].replace(",", "")
-    
+    result = soup.find_all('h1')[0].get_text().split()[0].replace(",", "")
+
     # Return if result is 0
     if int(result) == 0:
         return "查無結果"
@@ -36,7 +34,7 @@ def getUrl(message):
     targetNumber = randint(1, int(result))
     page = (targetNumber / 25) + 1
     item = targetNumber % 25
-    
+
     # Parse page url
     pageUrl = url + "&page=%s" % (page)
     targetRequests = requests.get(pageUrl)
@@ -46,7 +44,7 @@ def getUrl(message):
     return targetUrl
 
 def main():
-    print(getUrl("fate"))
+    print(getUrl("找本子 fate"))
 
 if __name__ == "__main__":
     main()

@@ -42,6 +42,8 @@ def getReply(message):
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
+    elif "找本子" == message.split()[0]:
+        reply = TextSendMessage(text=findNHenTai.getUrl(message))
     else:
         try:
             reply = TextSendMessage(text=replyDict[message.strip()])
