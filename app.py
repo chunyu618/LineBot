@@ -41,7 +41,7 @@ def handle_message(event):
     #print(event.__dict__)
     ID = ""
     if event.source.type == "group":
-        ID = groupID#event.source.group_id
+        ID = event.source.group_id#event.source.group_id
     elif event.source.type == "user":   
         ID = event.source.user_id
 
