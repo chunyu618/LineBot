@@ -16,6 +16,7 @@ for i in range(1,10):
 def getUrl(message):
     rev = ""
     token = getenv("CWB_AUTHORIZATION")
+    print(token)
     try:
         location = message.split()[1].replace("台", "臺")
     except:
