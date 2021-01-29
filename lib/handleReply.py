@@ -6,7 +6,7 @@ from random import randint
 usage = """
 指令集
 1. 衛星雲圖
-2. 天氣預報
+2. 天氣預報 <縣市名稱><縣/市>
 3. 骰子
 4. 擲硬幣
 5. 吃什麼
