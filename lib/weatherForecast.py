@@ -13,20 +13,26 @@ for i in range(1,10):
     for ii in soup.find_all('h4',{'class':'mb5 expand'}):
         print(ii.get_text())
 '''
+
+nameTranslation = {"Wx": "天氣現象", "MaxT": "最高溫度", "MinT": "最低溫度", "CI": "舒適度", "PoP": "降雨機率"}
+nameUnit = {"Wx": "", "MaxT": "°C", "MinT": "°C", "CI": "舒適度", "PoP": "%"}
+
 def getUrl(message):
     rev = ""
     token = getenv("CWB_AUTHORIZATION")
+    
     try:
         location = message.split()[1].replace("台", "臺")
     except:
         location = "臺北市"
+
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=%s&locationName=%s" % (token, location)
     r = requests.get(url).json()
+    
     if len(r['records']['location']) == 0:
         return "查無地點"
+    
     weatherElement = r['records']['location'][0]['weatherElement']
-    nameTranslation = {"Wx": "天氣現象", "MaxT": "最高溫度", "MinT": "最低溫度", "CI": "舒適度", "PoP": "降雨機率"}
-    nameUnit = {"Wx": "", "MaxT": "°C", "MinT": "°C", "CI": "舒適度", "PoP": "%"}
     for element in weatherElement:
         elementName = element['elementName']
         rev += "%s: %s%s\n" % (nameTranslation[elementName], element['time'][1]['parameter']['parameterName'], nameUnit[elementName])

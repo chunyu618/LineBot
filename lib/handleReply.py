@@ -2,8 +2,6 @@ from linebot.models import *
 from random import seed
 from random import random
 from random import randint
-from datetime import datetime
-
 
 replyDict = {
     "生日快樂": "@曉謙 生日快樂",
@@ -12,13 +10,11 @@ replyDict = {
 }
 
 def getReply(message):
-    seed(datetime.now())
+    seed()
     reply = ""
     if "吃什麼" == message.strip():
         from .food import getFood
         reply = TextSendMessage(text=getFood())
-    #elif "切" in message.text:
-    #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
     elif "骰子" == message.strip():
         return TextSendMessage(str(randint(1, 6)))
     elif "擲硬幣" == message.strip():

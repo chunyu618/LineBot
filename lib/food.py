@@ -6,7 +6,7 @@ from random import randint
 from datetime import datetime
 
 def getFood():
-    seed(datetime.now())
+    seed()
     rev = ""
     with open('files/food.json') as f:
         data = json.load(f)
