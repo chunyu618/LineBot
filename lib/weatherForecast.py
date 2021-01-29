@@ -15,7 +15,10 @@ for i in range(1,10):
 def getUrl(message):
     rev = ""
     token = "CWB-C8E5074D-8641-4E75-A81A-AB1CD0AC099E"
-    location = message.split()[1].replace("台", "臺")
+    try:
+        location = message.split()[1].replace("台", "臺")
+    except:
+        location = "臺北市"
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=%s&locationName=%s" % (token, location)
     r = requests.get(url).json()
     if len(r['records']['location']) == 0:
