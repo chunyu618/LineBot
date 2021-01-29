@@ -1,10 +1,7 @@
 from linebot.models import *
-
 from random import seed
 from random import random
 from datetime import datetime
-from .food import getFood
-from . import findNHenTai
 
 seed(datetime.now())
 
@@ -17,6 +14,7 @@ replyDict = {
 def getReply(message):
     reply = ""
     if "吃什麼" == message.strip():
+        from .food import getFood
         reply = TextSendMessage(text=getFood())
     #elif "切" in message.text:
     #    reply = TextSendMessage(text="@陳文榛 切ㄐㄐ")
@@ -36,6 +34,9 @@ def getReply(message):
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="彈")
+    elif "天氣預報" == message.split()[0]:
+        from . import weatherForecast
+        reply = TextSendMessage(text=weatherForecast.getUrl(message))
     elif "衛星雲圖" == message.strip():
         imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-A0058-003.png"
         reply = ImageSendMessage(
@@ -43,6 +44,7 @@ def getReply(message):
             preview_image_url=imgUrl
             )
     elif "找本子" == message.split()[0]:
+        from . import findNHenTai
         reply = TextSendMessage(text=findNHenTai.getUrl(message))
     else:
         try:
