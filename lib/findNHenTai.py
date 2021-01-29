@@ -33,7 +33,7 @@ def getUrl(message):
     # Calculate target page and item number
     targetNumber = randint(1, int(result))
     page = (targetNumber / 25) + 1
-    item = targetNumber % 25
+    item = (targetNumber % 25) - 1
 
     # Parse page url
     pageUrl = url + "&page=%s" % (page)
