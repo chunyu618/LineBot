@@ -4,6 +4,7 @@ from random import randint
 from random import seed
 from datetime import datetime
 from os import path
+from os import getenv
 seed(datetime.now())
 '''
 for i in range(1,10):
@@ -14,7 +15,7 @@ for i in range(1,10):
 '''
 def getUrl(message):
     rev = ""
-    token = "CWB-C8E5074D-8641-4E75-A81A-AB1CD0AC099E"
+    token = getenv(CWB_AUTHORIZATION)
     try:
         location = message.split()[1].replace("台", "臺")
     except:
