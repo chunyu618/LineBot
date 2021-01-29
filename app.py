@@ -41,11 +41,11 @@ def handle_message(event):
     #print(event.__dict__)
     ID = ""
     if event.source.type == "group":
-        ID = groupID#event.source.group_id #"Ccfb3d059fffde96fcab318e1c5a24c7e"
+        ID = groupID#event.source.group_id
     elif event.source.type == "user":   
         ID = event.source.user_id
 
-    reply = getReply(message.text)            
+    reply = getReply(message.text, ID)            
     print(reply)
     if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
