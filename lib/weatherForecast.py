@@ -29,7 +29,7 @@ def getUrl(message):
     nameUnit = {"Wx": "", "MaxT": "°C", "MinT": "°C", "CI": "舒適度", "PoP": "%"}
     for element in weatherElement:
         elementName = element['elementName']
-        rev += "%s: %s%s\n" % (nameTranslation[elementName], element['time'][0]['parameter']['parameterName'], nameUnit[elementName])
+        rev += "%s: %s%s\n" % (nameTranslation[elementName], element['time'][1]['parameter']['parameterName'], nameUnit[elementName])
         #print(element['elementName'])
         #print(element['time'][0]['parameter']['parameterName'])
         #print(rev)
