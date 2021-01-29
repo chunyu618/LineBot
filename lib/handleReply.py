@@ -3,10 +3,24 @@ from random import seed
 from random import random
 from random import randint
 
+usage = """
+指令集
+1. 衛星雲圖
+2. 天氣預報
+3. 骰子
+4. 擲硬幣
+5. 找本子 <Tag>
+6. 吃什麼
+7. 持續增加中......
+
+還有一些奇奇怪怪的自己去發掘吧
+"""
+
 replyDict = {
     "生日快樂": "@曉謙 生日快樂",
     "早安": "おはようございます。\n今日も一緒に頑張りましょう。",
-    "晚安": "今夜もおやすみなさい。\nやさしい夢みてね。"
+    "晚安": "今夜もおやすみなさい。\nやさしい夢みてね。",
+    "指令": usage
 }
 
 def getReply(message):

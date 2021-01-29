@@ -1,3 +1,3 @@
 from lib.handleReply import getReply
 
-print(getReply("擲硬幣"))
+print(getReply("指令"))
