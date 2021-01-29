@@ -4,9 +4,9 @@ from random import random
 from random import sample
 from random import randint
 from datetime import datetime
-seed(datetime.now())
 
 def getFood():
+    seed(datetime.now())
     rev = ""
     with open('files/food.json') as f:
         data = json.load(f)

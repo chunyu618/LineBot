@@ -1,4 +1,4 @@
 from lib.handleReply import getReply
 
-
-print(getReply(input()))
+for i in range(100):
+    print(getReply("擲硬幣"))
