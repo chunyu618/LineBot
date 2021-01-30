@@ -20,13 +20,16 @@ nameUnit = {"Wx": "", "MaxT": "°C", "MinT": "°C", "CI": "舒適度", "PoP": "%
 def getUrl(message):
     rev = ""
     token = getenv("CWB_AUTHORIZATION")
-    
+    if len(message.split()) > 2:
+        return "請輸入縣市"
+
     try:
         location = message.split()[1].replace("台", "臺")
     except:
         location = "臺北市"
 
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=%s&locationName=%s" % (token, location)
+    print(url)
     r = requests.get(url).json()
     
     if len(r['records']['location']) == 0:
