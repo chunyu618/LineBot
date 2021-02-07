@@ -38,7 +38,7 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):    
     message = TextSendMessage(text=event.message.text)
-    #print(event.__dict__)
+    print(event.__dict__)
     ID = ""
     if event.source.type == "group":
         ID = event.source.group_id#event.source.group_id
