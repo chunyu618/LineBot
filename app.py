@@ -45,8 +45,9 @@ def handle_message(event):
     if event.source.type == "group":
         ID = event.source.group_id  #event.source.group_id
     elif event.source.type == "user":
-        return
-        #ID = event.source.user_id
+        ID = event.source.user_id
+        if ID != "U16329817cbf4c6df77f60b122707a691":
+            return
 
     reply = getReply(message.text, ID)            
     #print(reply)
