@@ -42,14 +42,13 @@ def handle_message(event):
         return   
     message = TextSendMessage(text=event.message.text)
     #print(event.__dict__)
-    print(group_1)
-    print(group_2)
+    #print(group_1)
+    #print(group_2)
     ID = ""
     if event.source.type == "group":
-        print(event.source.group_id)
+        ID = event.source.group_id  #event.source.group_id
         if ID != group_1 and ID != group_2:
             return
-        ID = event.source.group_id  #event.source.group_id
     elif event.source.type == "user":
         ID = event.source.user_id
         if ID != "U16329817cbf4c6df77f60b122707a691":
