@@ -12,7 +12,8 @@ from linebot.models import *
 from lib.handleReply import getReply
 
 app = Flask(__name__)
-groupID = os.getenv("groupID")
+group_1 = os.getenv("group_1")
+group_2 = os.getenv("group_2")
 
 # Channel Access Token
 line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
@@ -40,9 +41,11 @@ def handle_message(event):
     if event.source.user_id == "U8a0689e8c509591a033866c59c19b323":
         return   
     message = TextSendMessage(text=event.message.text)
-    print(event.__dict__)
+    #print(event.__dict__)
     ID = ""
     if event.source.type == "group":
+        if ID != group_1 and ID != group_2:
+            return
         ID = event.source.group_id  #event.source.group_id
     elif event.source.type == "user":
         ID = event.source.user_id
