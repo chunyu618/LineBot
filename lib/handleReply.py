@@ -26,6 +26,7 @@ replyDict = {
 def getReply(message, token):
     seed()
     reply = ""
+    #print(message)
     if "吃什麼" == message.strip():
         from .food import getFood
         reply = TextSendMessage(text=getFood())
@@ -56,6 +57,9 @@ def getReply(message, token):
     elif "天氣預報" == message.split()[0]:
         from . import weatherForecast
         reply = TextSendMessage(text=weatherForecast.getUrl(message))
+    elif "地震報告" == message.strip():
+        from . import EarthquakeReport
+        reply = TextSendMessage(text=EarthquakeReport.getUrl(message))
     elif "衛星雲圖" == message.strip():
         imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-A0058-003.png"
         reply = ImageSendMessage(
