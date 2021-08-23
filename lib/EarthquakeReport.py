@@ -27,12 +27,12 @@ def getUrl(message):
     
     earthquakeReport = r['records']['earthquake'][0]
     rev += "地震編號: %s\n" % (earthquakeReport['earthquakeNo'])
-    rev += "報告內容: %s\n" % (earthquakeReport['reportContent'])
     rev += "地震時間: %s\n" % (earthquakeReport['earthquakeInfo']['originTime'])
     rev += "規模: %s\n" % (earthquakeReport['earthquakeInfo']['magnitude']['magnitudeValue'])
-    rev += "深度: %s公里\n" % (earthquakeReport['earthquakeInfo']['depth'])
+    rev += "深度: %s公里\n" % (earthquakeReport['earthquakeInfo']['depth']['value'])
     rev += "震央: %s\n" % (earthquakeReport['earthquakeInfo']['epiCenter']['location'])
     rev += "經緯度: %s度 %s度\n" % (earthquakeReport['earthquakeInfo']['epiCenter']['epiCenterLat']['value'], earthquakeReport['earthquakeInfo']['epiCenter']['epiCenterLon']['value'])
+    rev += "報告內容: %s\n" % (earthquakeReport['reportContent'])
     
 
 
