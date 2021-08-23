@@ -29,7 +29,7 @@ def getUrl(message):
         location = "臺北市"
 
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=%s&locationName=%s" % (token, location)
-    print(url)
+    #print(url)
     #print(requests.get(url))
     r = requests.get(url).json()
     
