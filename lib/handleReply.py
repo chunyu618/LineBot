@@ -10,7 +10,8 @@ usage = """
 3. 骰子
 4. 擲硬幣
 5. 吃什麼
-6. 持續增加中......
+6. 地震報告
+7. 持續增加中......
 
 還有一些奇奇怪怪的自己去發掘吧
 """
@@ -60,8 +61,14 @@ def getReply(message, token):
     elif "地震報告" == message.strip():
         from . import EarthquakeReport
         reply = TextSendMessage(text=EarthquakeReport.getUrl(message))
-    elif "衛星雲圖" == message.strip():
+    elif "雷達回波" == message.strip():
         imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-A0058-003.png"
+        reply = ImageSendMessage(
+            original_content_url=imgUrl,
+            preview_image_url=imgUrl
+            )
+    elif "衛星雲圖" == message.strip():
+        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-B0028-003.jpg"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
