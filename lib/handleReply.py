@@ -21,6 +21,7 @@ replyDict = {
     "早安": "おはようございます。\n今日も一緒に頑張りましょう。",
     "晚安": "今夜もおやすみなさい。\nやさしい夢みてね。",
     "你好": "ご挨拶をちゃんとして偉いね",
+    "午安": "請用冰開水",
     "指令": usage,
 }
 
@@ -33,7 +34,12 @@ def getReply(message, token, replyMetaData):
     #print(message)
     if "吃什麼" == message.strip():
         from .food import getFood
+        replyMetadata.numberOfFood += 1
+        called = replyMetadata.numberOfFood
         reply = TextSendMessage(text=getFood())
+        if replyMetaData.numberOfFood == 6:
+            replyMetaData.numberOfFood = 0
+
     elif "骰子" == message.strip():
         return TextSendMessage(str(randint(1, 6)))
     elif "擲硬幣" == message.strip():
@@ -65,13 +71,13 @@ def getReply(message, token, replyMetaData):
         from . import EarthquakeReport
         reply = TextSendMessage(text=EarthquakeReport.getUrl(message))
     elif "雷達回波" == message.strip():
-        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-A0058-003.png"
+        imgUrl = "https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
     elif "衛星雲圖" == message.strip():
-        imgUrl = "https://opendata.cwb.gov.tw/fileapi/opendata/MSC/O-B0028-003.jpg"
+        imgUrl = "https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-B0028-003.jpg"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
