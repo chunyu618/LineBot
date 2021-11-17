@@ -79,8 +79,8 @@ def getReply(message, token, replyMetaData):
     elif "麻糬" == message.strip():
         replyMetaData.numberOfMochi += 1    
         if replyMetaData.numberOfMochi == 6:
-            reply = "救命！"
             replyMetaData.numberOfMochi = 0
+            return TextSendMessage("救命！")
     elif "找本子" == message.split()[0]:
         if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
             from . import findNHenTai
