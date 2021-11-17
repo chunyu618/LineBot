@@ -24,9 +24,12 @@ replyDict = {
     "指令": usage,
 }
 
-def getReply(message, token):
+def getReply(message, token, replyMetaData):
     seed()
+    #print(replyMetaData.numberOfMochi)
     reply = ""
+
+
     #print(message)
     if "吃什麼" == message.strip():
         from .food import getFood
@@ -73,6 +76,11 @@ def getReply(message, token):
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
+    elif "麻糬" == message.strip():
+        replyMetaData.numberOfMochi += 1    
+        if replyMetaData.numberOfMochi == 6:
+            reply = "救命！"
+            replyMetaData.numberOfMochi = 0
     elif "找本子" == message.split()[0]:
         if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
             from . import findNHenTai

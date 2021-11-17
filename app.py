@@ -10,6 +10,7 @@ from linebot.exceptions import (
 from linebot.models import *
 
 from lib.handleReply import getReply
+from lib.ReplyClass import ReplyMetaData
 
 app = Flask(__name__)
 group_1 = os.getenv("group_1")
@@ -19,6 +20,7 @@ group_2 = os.getenv("group_2")
 line_bot_api = LineBotApi(os.getenv("CHANNEL_ACCESS_TOKEN"))
 # Channel Secret
 handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
+replyMetaData = ReplyMetaData()
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -54,7 +56,8 @@ def handle_message(event):
         if ID != "U16329817cbf4c6df77f60b122707a691":
             return
 
-    reply = getReply(message.text, ID)            
+    global replyMetaData
+    reply = getReply(message.text, ID, replyMetaData)            
     #print(reply)
     if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
@@ -63,3 +66,4 @@ import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
