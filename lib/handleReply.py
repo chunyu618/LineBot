@@ -34,8 +34,8 @@ def getReply(message, token, replyMetaData):
     #print(message)
     if "吃什麼" == message.strip():
         from .food import getFood
-        replyMetadata.numberOfFood += 1
-        called = replyMetadata.numberOfFood
+        replyMetaData.numberOfFood += 1
+        called = replyMetaData.numberOfFood
         reply = TextSendMessage(text=getFood())
         if replyMetaData.numberOfFood == 6:
             replyMetaData.numberOfFood = 0
