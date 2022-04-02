@@ -2,6 +2,7 @@ from linebot.models import *
 from random import seed
 from random import random
 from random import randint
+import json
 
 usage = """
 指令集
@@ -25,13 +26,30 @@ replyDict = {
     "指令": usage,
 }
 
+token_read = False
+token_list = []
+def read_token():
+    global token_list
+    global token_read
+    with open('files/token.json') as f:
+        data = json.load(f)
+        token_list = data['token']
+        token_read = True
+            
+    return
+
+
 def getReply(message, token, replyMetaData):
     seed()
     #print(replyMetaData.numberOfMochi)
-    reply = ""
+    global token_list
+    global token_read
+    
+    if not token_read:
+        read_token()
+    if token not in token_list:
+        return ""
 
-
-    print("token is ", token)
     matchValue = message.strip()
     if "吃什麼" == matchValue:
         from .food import getFood
@@ -89,17 +107,14 @@ def getReply(message, token, replyMetaData):
             replyMetaData.numberOfMochi = 0
             return TextSendMessage("救命！")
     elif "找本子" == message.split()[0]:
-        if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
+        if token == token_list[0]:
             from . import findNHenTai
             reply = TextSendMessage(text=findNHenTai.getUrl(message))
         else:
             reply = ""
     elif "找影集" == message.split()[0]:
-        if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
-            from . import findTV
-            reply = TextSendMessage(text=findTV.getUrl(message))
-        else:
-            reply = ""
+        from . import findTV
+        reply = TextSendMessage(text=findTV.getUrl(message))
     else:
         try:
             reply = TextSendMessage(text=replyDict[matchValue].strip())
