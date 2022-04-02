@@ -31,7 +31,6 @@ def getReply(message, token, replyMetaData):
     reply = ""
 
 
-    #print(message)
     matchValue = message.strip()
     if "吃什麼" == matchValue:
         from .food import getFood
@@ -92,6 +91,12 @@ def getReply(message, token, replyMetaData):
         if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
             from . import findNHenTai
             reply = TextSendMessage(text=findNHenTai.getUrl(message))
+        else:
+            reply = ""
+    elif "找影集" == message.split()[0]:
+        if token == "Ccfb3d059fffde96fcab318e1c5a24c7e":
+            from . import findTV
+            reply = TextSendMessage(text=findTV.getUrl(message))
         else:
             reply = ""
     else:
