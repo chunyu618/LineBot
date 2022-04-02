@@ -28,7 +28,7 @@ def getUrl(message):
 
     if len(rev) == 0:
         return "查無資料"
-    return rev
+    return rev.strip()
     
     
 
