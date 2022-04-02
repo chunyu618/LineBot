@@ -19,7 +19,6 @@ def getUrl(message):
     # Get the result number
     r = requests.get(url)
     
-    print(type(r.text))
     data = json.loads(r.text)
 
     rev = ""
