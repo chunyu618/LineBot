@@ -59,7 +59,7 @@ def handle_message(event):
     global replyMetaData
     reply = getReply(message.text, ID, replyMetaData)            
     #print(reply)
-    if len(reply) != 0:
+    if reply != "":
         line_bot_api.reply_message(event.reply_token, reply)
 
 import os
