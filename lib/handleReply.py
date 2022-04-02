@@ -32,7 +32,8 @@ def getReply(message, token, replyMetaData):
 
 
     #print(message)
-    if "吃什麼" == message.strip():
+    matchValue = message.strip()
+    if "吃什麼" == matchValue:
         from .food import getFood
         replyMetaData.numberOfFood += 1
         called = replyMetaData.numberOfFood
@@ -40,15 +41,15 @@ def getReply(message, token, replyMetaData):
         if replyMetaData.numberOfFood == 6:
             replyMetaData.numberOfFood = 0
 
-    elif "骰子" == message.strip():
+    elif "骰子" == matchValue:
         return TextSendMessage(str(randint(1, 6)))
-    elif "擲硬幣" == message.strip():
+    elif "擲硬幣" == matchValue:
         r = random()
         if r < 0.5:
             return TextSendMessage("正")
         else:
             return TextSendMessage("反")
-    elif "野" == message.strip():
+    elif "野" == matchValue:
         r = random()
         if r < 0.001:
             reply = TextSendMessage(text="幾歲了還在接龍＝＝")
@@ -56,7 +57,7 @@ def getReply(message, token, replyMetaData):
             reply = TextSendMessage(text="斷")
         else:
             reply = TextSendMessage(text="格")
-    elif "炸" == message.strip():
+    elif "炸" == matchValue:
         r = random()
         if r < 0.001:
             reply = TextSendMessage(text="幾歲了還在接龍＝＝")
@@ -67,22 +68,22 @@ def getReply(message, token, replyMetaData):
     elif "天氣預報" == message.split()[0]:
         from . import weatherForecast
         reply = TextSendMessage(text=weatherForecast.getUrl(message))
-    elif "地震報告" == message.strip():
+    elif "地震報告" == matchValue:
         from . import EarthquakeReport
         reply = TextSendMessage(text=EarthquakeReport.getUrl(message))
-    elif "雷達回波" == message.strip():
+    elif "雷達回波" == matchValue:
         imgUrl = "https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-A0058-003.png"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
-    elif "衛星雲圖" == message.strip():
+    elif "衛星雲圖" == matchValue:
         imgUrl = "https://cwbopendata.s3.ap-northeast-1.amazonaws.com/MSC/O-B0028-003.jpg"
         reply = ImageSendMessage(
             original_content_url=imgUrl,
             preview_image_url=imgUrl
             )
-    elif "麻糬" == message.strip():
+    elif "麻糬" == matchValue:
         replyMetaData.numberOfMochi += 1    
         if replyMetaData.numberOfMochi == 6:
             replyMetaData.numberOfMochi = 0
@@ -95,7 +96,7 @@ def getReply(message, token, replyMetaData):
             reply = ""
     else:
         try:
-            reply = TextSendMessage(text=replyDict[message.strip()].strip())
+            reply = TextSendMessage(text=replyDict[matchValue].strip())
         except:
             reply = ""
     return reply            
