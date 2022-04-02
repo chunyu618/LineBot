@@ -31,6 +31,7 @@ def getReply(message, token, replyMetaData):
     reply = ""
 
 
+    print("token is ", token)
     matchValue = message.strip()
     if "吃什麼" == matchValue:
         from .food import getFood
